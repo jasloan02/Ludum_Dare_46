@@ -17,7 +17,7 @@ public class Player extends Actor {
 	
 	Animation<TextureRegion> animation;
 	
-	float x, y, mx, my;
+	float mx, my;
 	float width, height;
 	float speed = 200f;
 	float elapsedTime = 0;
@@ -27,8 +27,8 @@ public class Player extends Actor {
 	boolean attacking = false;
 
 	public Player(float x, float y, int scale) {
-		this.x = x;
-		this.y = y;
+		setX(x);
+		setY(y);
 		
 		width = 32 * scale;
 		height = 32 * scale;
@@ -49,14 +49,14 @@ public class Player extends Actor {
 	
 	@Override
 	public void draw(Batch batch, float alpha) {
-		batch.draw(getCurrentFrame(), x, y, width, height);
+		batch.draw(getCurrentFrame(), getX(), getY(), width, height);
 		
 		if (attacking) {
 			if (facingRight) {
-				SLASH.draw(batch, x + width - 10, y, width, height, false);
+				SLASH.draw(batch, getX() + width - 10, getY(), width, height, false);
 			}
 			else {
-				SLASH.draw(batch, x - width + 10, y, width, height, true);
+				SLASH.draw(batch, getX() - width + 10, getY(), width, height, true);
 			}
 		}
 	}
@@ -86,8 +86,8 @@ public class Player extends Actor {
 		SLASH.update(elapsedTime - attackStartTime);
 		
 		if (!attacking) {
-			x += mx;
-			y += my;
+			setX(getX() + mx);
+			setY(getY() + my);
 		}
 	}
 	

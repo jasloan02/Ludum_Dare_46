@@ -10,8 +10,8 @@ public class StageHandler extends Stage {
 	Enemy enemy;
 	
 	public StageHandler() {
-		player = new Player(300, 300, 2);
-		enemy = new Enemy(300, 300, 2);
+		player = new Player(100, 100, 2);
+		enemy = new Enemy(500, 500, 2);
 		
 		addActor(player);
 		addActor(enemy);
@@ -20,6 +20,7 @@ public class StageHandler extends Stage {
 	@Override
 	public void act(float delta) {
 		player.act(delta);
+		enemy.updatePlayerPosition(player.getX(), player.getY());
 		enemy.act(delta);
 	}
 
