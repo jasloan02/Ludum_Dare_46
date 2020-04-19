@@ -25,6 +25,7 @@ public class MainGame extends ApplicationAdapter {
 		
 		stageHandler.act(Gdx.graphics.getDeltaTime());
 		stageHandler.draw();
+		stageHandler.renderTiles();
 	}
 	
 	@Override

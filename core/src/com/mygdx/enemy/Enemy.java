@@ -43,7 +43,7 @@ public class Enemy extends Actor {
 		WALK = new Animation<TextureRegion>(1/6f, WALK_ATLAS.getRegions());
 		
 		SHOOT_ATLAS = new TextureAtlas(Gdx.files.internal("Hunter_Shoot-packed/pack.atlas"));
-		SHOOT = new Animation<TextureRegion>(1/2f, SHOOT_ATLAS.getRegions());
+		SHOOT = new Animation<TextureRegion>(1/3f, SHOOT_ATLAS.getRegions());
 		
 		animation = IDLE;
 	}
@@ -98,8 +98,10 @@ public class Enemy extends Actor {
 			yDir = (random.nextFloat() * 2 - 1) * 0.5f;
 		}
 		else {
-			if (SharedMethods.distance(getX(), getY(), pX, pY) <= 300) {
+			if (SharedMethods.distance(getX(), getY(), pX, pY) <= 100) {
 				shooting = true;
+				
+				facingRight = pX >= getX();
 			}
 			else {
 				shooting = false;
@@ -116,6 +118,9 @@ public class Enemy extends Actor {
 		}
 		else if (mx != 0 && my != 0) {
 			animation = WALK;
+			
+			if (mx < 0) facingRight = false;
+			else if (mx > 0) facingRight = true;
 		}
 		else {
 			animation = IDLE;
