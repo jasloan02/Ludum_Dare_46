@@ -2,7 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -30,7 +29,7 @@ public class StageHandler extends Stage {
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update();
 		
-		tilemap = new TmxMapLoader().load("Field_Tilemap.tmx");
+		tilemap = new TmxMapLoader().load("Field.tmx");
 		tilemapRender = new OrthogonalTiledMapRenderer(tilemap);
 	}
 	
